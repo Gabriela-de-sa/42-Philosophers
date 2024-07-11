@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gde-sa <gde-sa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:48:06 by gde-sa            #+#    #+#             */
-/*   Updated: 2024/06/09 13:01:14 by gde-sa           ###   ########.fr       */
+/*   Updated: 2024/07/11 01:41:49 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PHILO_H
+# define PHILO_H
+# define MAX_PHILO 200
+
+int		ft_check_args(int argc, char **argv);
+
+#endif
