@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/09 12:48:06 by gde-sa            #+#    #+#             */
-/*   Updated: 2024/07/11 01:41:49 by gabriela         ###   ########.fr       */
+/*   Created: 2024/10/01 12:40:57 by gabriela          #+#    #+#             */
+/*   Updated: 2024/10/21 19:06:33 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
-# define MAX_PHILO 200
 
-int		ft_check_args(int argc, char **argv);
+# include <pthread.h>
 
 #endif

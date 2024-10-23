@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/06/09 12:50:27 by gde-sa            #+#    #+#              #
-#    Updated: 2024/07/11 02:00:06 by gabriela         ###   ########.fr        #
+#    Created: 2024/10/01 12:31:24 by gabriela          #+#    #+#              #
+#    Updated: 2024/10/22 19:31:11 by gabriela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,25 +16,25 @@
 NAME = philo
 CC = cc
 CFLAGS = -g3 -Wall -Wextra -Werror -pthread
-HEADER = -I ./include/
+HEADER = -I ./include
 
 #******************************************************************************#
 #				     				FILES      								   #
 #******************************************************************************#
 FILES = \
 	philo.c\
-	validations.c\
+	#validations.c\
+	#philo_utils.c\
 
 OBJS = $(FILES:.c=.o)
 
 #******************************************************************************#
 #				     				RULES      								   #
 #******************************************************************************#
-
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(HEADER) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(HEADER) -o $(NAME)
 
 clean:
 	rm -rf $(OBJS)
