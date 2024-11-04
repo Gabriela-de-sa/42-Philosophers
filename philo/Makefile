@@ -6,7 +6,7 @@
 #    By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 12:31:24 by gabriela          #+#    #+#              #
-#    Updated: 2024/10/22 19:31:11 by gabriela         ###   ########.fr        #
+#    Updated: 2024/11/04 14:11:53 by gabriela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@
 #******************************************************************************#
 NAME = philo
 CC = cc
-CFLAGS = -g3 -Wall -Wextra -Werror -pthread
+CFLAGS = -g3 -Wall -Wextra -Werror
+#CFLAGS = -g3 -Wall -Wextra -Werror -pthread
 HEADER = -I ./include
 
 #******************************************************************************#
@@ -23,8 +24,10 @@ HEADER = -I ./include
 #******************************************************************************#
 FILES = \
 	philo.c\
-	#validations.c\
-	#philo_utils.c\
+	page_philo.c\
+	validations.c\
+	philo_utils.c\
+	error.c\
 
 OBJS = $(FILES:.c=.o)
 
@@ -34,13 +37,13 @@ OBJS = $(FILES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(HEADER) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(HEADER) -o $(NAME)
 
 clean:
-	rm -rf $(OBJS)
+	@rm -rf $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 

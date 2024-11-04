@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 12:56:46 by gabriela          #+#    #+#             */
-/*   Updated: 2024/11/01 18:47:21 by gabriela         ###   ########.fr       */
+/*   Created: 2024/11/04 13:05:39 by gabriela          #+#    #+#             */
+/*   Updated: 2024/11/04 14:10:32 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/philo.h"
 
-int	main(int argc, char **argv)
+int	ft_error(int n)
 {
-	ft_page_philo();
-	if (ft_validations(argc, argv) == 1)
-		return (1);
-	return (0);
+	if (n == 1)
+		printf("only positive numbers!!");
+	else if (n == 2)
+		printf("invalid number of args!!");
+	else if (n == 3)
+		printf("invalid philosopher number!!");
+	return (1);
 }
