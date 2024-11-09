@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_utils.c                                      :+:      :+:    :+:   */
+/*   clear_memory.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/09 17:00:15 by gde-sa            #+#    #+#             */
-/*   Updated: 2024/11/09 18:51:09 by gabriela         ###   ########.fr       */
+/*   Created: 2024/11/07 19:48:15 by gabriela          #+#    #+#             */
+/*   Updated: 2024/11/09 18:37:55 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/philo.h"
 
-int	ft_atoi(char *str)
+// limpar memoria da struct
+
+// destruir o mutex em um loop - primeiro fazer isso
+void	ft_mutex_destroy(t_fork *fork, int n_philo)
 {
-	int			i;
-	long int	result;
+	int	i;
 
 	i = 0;
-	result = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v')
-		i++;
-	if (str[i] == '-')
-		return (1);
-	if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (i < n_philo)
 	{
-		result = result * 10 + str[i] - '0';
+		pthread_mutex_destroy(&fork[i].fork);
 		i++;
 	}
-	return (result);
+}
+
+int	ft_clear_memory(t_philo *philo, t_fork *fork, int n_philo)
+{
+	ft_mutex_destroy(fork, n_philo);
+	free(philo);
+	free(fork);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 12:31:24 by gabriela          #+#    #+#              #
-#    Updated: 2024/11/04 14:11:53 by gabriela         ###   ########.fr        #
+#    Updated: 2024/11/09 17:26:56 by gabriela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ FILES = \
 	validations.c\
 	philo_utils.c\
 	error.c\
+	clear_memory.c\
 
 OBJS = $(FILES:.c=.o)
 

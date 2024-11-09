@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_utils.c                                      :+:      :+:    :+:   */
+/*   dinner_philo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/09 17:00:15 by gde-sa            #+#    #+#             */
-/*   Updated: 2024/11/09 18:51:09 by gabriela         ###   ########.fr       */
+/*   Created: 2024/11/07 19:13:15 by gabriela          #+#    #+#             */
+/*   Updated: 2024/11/09 18:49:28 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/philo.h"
 
-int	ft_atoi(char *str)
+// function test
+void	*ft_dinner_philo(void *p_index)
 {
-	int			i;
-	long int	result;
+	t_philo	*philo;
 
-	i = 0;
-	result = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v')
-		i++;
-	if (str[i] == '-')
-		return (1);
-	if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + str[i] - '0';
-		i++;
-	}
-	return (result);
+	philo = (t_philo *)p_index;
+	printf("index philo: %i\n", philo->id);
+	return (NULL);
 }
