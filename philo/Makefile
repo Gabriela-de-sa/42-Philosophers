@@ -6,7 +6,7 @@
 #    By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 12:31:24 by gabriela          #+#    #+#              #
-#    Updated: 2024/11/09 17:26:56 by gabriela         ###   ########.fr        #
+#    Updated: 2024/11/12 19:11:45 by gabriela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@
 #******************************************************************************#
 NAME = philo
 CC = cc
-CFLAGS = -g3 -Wall -Wextra -Werror
-#CFLAGS = -g3 -Wall -Wextra -Werror -pthread
+CFLAGS = -g3 -Wall -Wextra -Werror -lpthread
 HEADER = -I ./include
 
 #******************************************************************************#
@@ -29,6 +28,9 @@ FILES = \
 	philo_utils.c\
 	error.c\
 	clear_memory.c\
+	dinner_philo.c\
+	create_arr.c\
+	monitoring.c\
 
 OBJS = $(FILES:.c=.o)
 

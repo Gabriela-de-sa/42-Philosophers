@@ -6,7 +6,7 @@
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 12:41:40 by gabriela          #+#    #+#             */
-/*   Updated: 2024/11/05 14:10:13 by gabriela         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:31:39 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ int	main(int argc, char **argv)
 //         de memoria. Por algum motivo algumas das threads podem travar e acontecer de valores
 //		   indesejados na execucao do programa ou no final (output)
 //pthread_mutex_init(&mutex, NULL); - inicia o mutex
-//pthread_mutex_destroy(&mutex); - destoi o mutex contruido
+//pthread_mutex_destroy(&mutex); - destroi o mutex contruido
 //pthread_mutex_lock(&mutex); - bloqueia outras threads que queiram acessar um lugar de memoria ja ocupado
 //pthread_mutex_unlock(&mutex); - desbloqueia e libera o acesso naquele espaco que antes estava ocupado

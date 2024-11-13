@@ -6,16 +6,14 @@
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 19:48:15 by gabriela          #+#    #+#             */
-/*   Updated: 2024/11/09 18:37:55 by gabriela         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:53:51 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/philo.h"
 
-// limpar memoria da struct
-
 // destruir o mutex em um loop - primeiro fazer isso
-void	ft_mutex_destroy(t_fork *fork, int n_philo)
+void	ft_mutex_destroy_fork(t_fork *fork, t_dinner *dinner, int n_philo)
 {
 	int	i;
 
@@ -25,12 +23,14 @@ void	ft_mutex_destroy(t_fork *fork, int n_philo)
 		pthread_mutex_destroy(&fork[i].fork);
 		i++;
 	}
+	pthread_mutex_destroy(&dinner->mutex_dinner);
 }
 
-int	ft_clear_memory(t_philo *philo, t_fork *fork, int n_philo)
+int	ft_clear_memory(t_philo *philo, t_fork *fork, t_dinner *dinner, int n_philo)
 {
-	ft_mutex_destroy(fork, n_philo);
+	ft_mutex_destroy_fork(fork, dinner, n_philo);
 	free(philo);
 	free(fork);
+	free(dinner);
 	return (0);
 }
