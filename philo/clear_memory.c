@@ -6,7 +6,7 @@
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 19:48:15 by gabriela          #+#    #+#             */
-/*   Updated: 2024/11/13 17:53:51 by gabriela         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:48:50 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ void	ft_mutex_destroy_fork(t_fork *fork, t_dinner *dinner, int n_philo)
 int	ft_clear_memory(t_philo *philo, t_fork *fork, t_dinner *dinner, int n_philo)
 {
 	ft_mutex_destroy_fork(fork, dinner, n_philo);
-	free(philo);
-	free(fork);
-	free(dinner);
+	if (philo != NULL)
+		free(philo);
+	if (fork != NULL)
+		free(fork);
+	if (dinner != NULL)
+		free(dinner);
 	return (0);
 }

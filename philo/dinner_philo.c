@@ -6,7 +6,7 @@
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 19:13:15 by gabriela          #+#    #+#             */
-/*   Updated: 2024/11/13 17:56:43 by gabriela         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:07:38 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_think(t_philo *philo, long int log_time)
 {
 	log_time = ft_get_timestamp();
 	printf("%ld %i is thinking\n", log_time - philo->dinner->start, philo->id);
+	usleep(1000);
 }
 
 void	ft_eat(t_philo *philo, long int log_time)
@@ -55,24 +56,18 @@ void	*ft_dinner_philo(void *arg)
 {
 	long int	log_time;
 	t_philo		*philo;
-	int			i;
 
 	log_time = 0;
 	philo = (t_philo *)arg;
-	i = 0;
+	// usleep para dar tempo da thread de monitoramento ser criada
+	usleep(2000);
 	while (1)
 	{
 		if (philo->dinner->stop == 1 || philo->dinner->decrease_philo == 0)
 			break ;
 		ft_eat(philo, log_time);
 		ft_sleep(philo, log_time);
-		usleep(1000);
 		ft_think(philo, log_time);
-		i++;
-		if (i == 3)
-			philo->dinner->stop = 1;
 	}
 	return (NULL);
 }
-
-// variavl e if (i == 3) sao teste pois o monitor nao funciona

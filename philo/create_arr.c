@@ -6,7 +6,7 @@
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:45:43 by gabriela          #+#    #+#             */
-/*   Updated: 2024/11/13 17:54:02 by gabriela         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:21:11 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	ft_create_fork(int n_fork, t_fork *fork)
 	return (0);
 }
 
-int	ft_create_thread(t_philo *philo, t_fork *fork, \
-		char **argv, t_dinner *dinner)
+int	ft_create_thread(t_philo *philo, t_fork *fork, t_dinner *dinner)
 {
 	int	i;
 
@@ -42,8 +41,6 @@ int	ft_create_thread(t_philo *philo, t_fork *fork, \
 		philo[i].fork = fork;
 		philo[i].fork_right = &fork[i];
 		philo[i].fork_left = &fork[(i + 1) % dinner->number_philos];
-		if (philo->dinner->count_arg == 5)
-			philo[i].limit_meals = ft_atoi(argv[5]);
 		if (pthread_create(
 				&philo[i].threads, NULL, &ft_dinner_philo, &philo[i]) != 0)
 			return (1);

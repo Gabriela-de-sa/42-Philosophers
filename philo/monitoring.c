@@ -6,14 +6,15 @@
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:30:54 by gabriela          #+#    #+#             */
-/*   Updated: 2024/11/13 16:33:04 by gabriela         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:31:27 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/philo.h"
 
-void	ft_init_monitor(t_dinner *dinner, char **argv, int argc)
+void	ft_init_monitor(t_dinner *dinner, t_philo *philo, char **argv, int argc)
 {
+	dinner->philos = philo;
 	dinner->count_arg = argc - 1;
 	dinner->start = ft_get_timestamp();
 	dinner->number_philos = ft_atoi(argv[1]);
@@ -22,15 +23,19 @@ void	ft_init_monitor(t_dinner *dinner, char **argv, int argc)
 	dinner->time_sleep = ft_atoi(argv[4]);
 	dinner->stop = 0;
 	dinner->decrease_philo = dinner->number_philos;
-	printf("iniciei o monitor");
+	if (dinner->count_arg == 5)
+		dinner->limit_meals = ft_atoi(argv[1]);
+	else
+		dinner->limit_meals = -1;
+	printf("\niniciei o monitor\n");
 }
 
 int	ft_ignore_philo(t_dinner *dinner, int index)
 {
 	if (dinner->count_arg == 5)
 	{
-		printf("monitor de count meals");
-		if (dinner->philos[index].count_meals >= dinner->philos->limit_meals)
+		printf("\nmonitor de count meals\n");
+		if (dinner->philos[index].count_meals >= dinner->limit_meals)
 		{
 			pthread_mutex_lock(&dinner->mutex_dinner);
 			dinner->decrease_philo--;
@@ -51,8 +56,10 @@ int	ft_check_died(t_dinner *dinner, int index)
 	time_alive = current_time - dinner->philos[index].last_meals;
 	if (time_alive >= dinner->time_die)
 	{
-		printf("entrei dentro do if time_alive >= dinner->time_die stop");
+		printf("%ld %i died\n", \
+			current_time - dinner->start, dinner->philos[index].id);
 		dinner->stop = 1;
+		pthread_mutex_unlock(&dinner->mutex_dinner);
 		return (1);
 	}
 	pthread_mutex_unlock(&dinner->mutex_dinner);
@@ -65,12 +72,10 @@ void	*ft_table(void *arg)
 	int			i;
 
 	dinner = (t_dinner *)arg;
-	i = 0;
 	while (!dinner->stop)
 	{
-		i = 0;
-		printf("table checando");
-		while (i <= dinner->number_philos - 1)
+		i = -1;
+		while (++i <= dinner->number_philos - 1)
 		{
 			if (ft_check_died(dinner, i) == 1)
 				break ;
@@ -79,12 +84,12 @@ void	*ft_table(void *arg)
 				i++;
 				continue ;
 			}
-			i++;
 		}
 		if (dinner->stop == 1)
 			break ;
-		if (dinner->decrease_philo == 0)
+		if (dinner->decrease_philo <= 0)
 			break ;
+		usleep(1000);
 	}
 	return (NULL);
 }
@@ -93,7 +98,6 @@ int	ft_monitoring(t_dinner *dinner)
 {
 	pthread_t	monitor;
 
-	printf("monitor");
 	pthread_mutex_init(&dinner->mutex_dinner, NULL);
 	if (pthread_create(&monitor, NULL, &ft_table, &dinner) != 0)
 		return (1);

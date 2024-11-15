@@ -6,7 +6,7 @@
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:56:46 by gabriela          #+#    #+#             */
-/*   Updated: 2024/11/13 17:52:13 by gabriela         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:21:32 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	main(int argc, char **argv)
 	dinner = malloc(1 * sizeof(t_dinner));
 	if (fork == NULL || philo == NULL || dinner == NULL)
 		return (1);
-	ft_init_monitor(dinner, argv, argc);
+	ft_init_monitor(dinner, philo, argv, argc);
 	if (ft_create_fork(dinner->number_philos, fork) != 0)
 		return (ft_clear_memory(philo, fork, dinner, dinner->number_philos));
-	if (ft_create_thread(philo, fork, argv, dinner) != 0)
+	if (ft_create_thread(philo, fork, dinner) != 0)
 		return (ft_clear_memory(philo, fork, dinner, dinner->number_philos));
 	if (ft_monitoring(dinner) != 0)
 		return (ft_clear_memory(philo, fork, dinner, dinner->number_philos));
