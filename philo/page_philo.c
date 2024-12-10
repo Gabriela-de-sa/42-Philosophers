@@ -6,7 +6,7 @@
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:17:45 by gabriela          #+#    #+#             */
-/*   Updated: 2024/11/07 15:38:11 by gabriela         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:50:06 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	ft_page_philo(void)
 {
-	printf("\n");
-	printf("          ********************************************          \n");
-	printf("       ***                                            ***       \n");
-	printf("     **                                                  **     \n");
-	printf("   **                     Philosophers'                    **   \n");
-	printf("   **                        Dinner                        **  \n");
-	printf("     **                                                  **     \n");
-	printf("       ***                                            ***       \n");
-	printf("          ********************************************          \n");
+	printf(MAGENTA);
+	printf("      ****************************************************\n");
+	printf(RED);
+	printf("      *                                                  *\n");
+	printf("      *             PHILOSOPHERS' DINNER                 *\n");
+	printf("      *                                                  *\n");
+	printf(MAGENTA);
+	printf("      ****************************************************\n");
+	printf(RESET);
 	printf("\n");
 }

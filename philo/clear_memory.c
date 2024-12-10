@@ -6,29 +6,43 @@
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 19:48:15 by gabriela          #+#    #+#             */
-/*   Updated: 2024/11/14 17:48:50 by gabriela         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:20:31 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/philo.h"
 
 // destruir o mutex em um loop - primeiro fazer isso
-void	ft_mutex_destroy_fork(t_fork *fork, t_dinner *dinner, int n_philo)
+void	ft_mutex_destroy_fork(t_fork *fork, t_dinner *dinner)
 {
 	int	i;
 
 	i = 0;
-	while (i < n_philo)
+	while (i < dinner->number_philos)
 	{
-		pthread_mutex_destroy(&fork[i].fork);
+		ft_act_mutex(DESTROY, &fork[i].fork);
 		i++;
 	}
-	pthread_mutex_destroy(&dinner->mutex_dinner);
 }
 
-int	ft_clear_memory(t_philo *philo, t_fork *fork, t_dinner *dinner, int n_philo)
+void	ft_mutex_destroy_philo(t_philo *philo, t_dinner *dinner)
 {
-	ft_mutex_destroy_fork(fork, dinner, n_philo);
+	int	i;
+
+	i = 0;
+	while (i < dinner->number_philos)
+	{
+		ft_act_mutex(DESTROY, &philo[i].philo_mutex);
+		i++;
+	}
+}
+
+int	ft_clear_memory(t_dinner *dinner, t_philo *philo, t_fork *fork)
+{
+	ft_mutex_destroy_fork(fork, dinner);
+	ft_mutex_destroy_philo(philo, dinner);
+	ft_act_mutex(DESTROY, &dinner->mutex_dinner);
+	ft_act_mutex(DESTROY, &dinner->print_mutex);
 	if (philo != NULL)
 		free(philo);
 	if (fork != NULL)

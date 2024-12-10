@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 13:05:39 by gabriela          #+#    #+#             */
-/*   Updated: 2024/11/04 14:10:32 by gabriela         ###   ########.fr       */
+/*   Created: 2024/06/09 17:00:15 by gde-sa            #+#    #+#             */
+/*   Updated: 2024/11/21 16:11:38 by gabriela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/philo.h"
 
-int	ft_error(int n)
+int	ft_atoi(char *str)
 {
-	if (n == 1)
-		printf("only positive numbers!!");
-	else if (n == 2)
-		printf("invalid number of args!!");
-	else if (n == 3)
-		printf("invalid philosopher number!!");
-	return (1);
+	int			i;
+	long		result;
+
+	i = 0;
+	result = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v')
+		i++;
+	if (str[i] == '-')
+		return (1);
+	if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + str[i] - '0';
+		i++;
+	}
+	return (result);
 }
+

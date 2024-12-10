@@ -6,7 +6,7 @@
 #    By: gabriela <gabriela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 12:31:24 by gabriela          #+#    #+#              #
-#    Updated: 2024/11/12 19:11:45 by gabriela         ###   ########.fr        #
+#    Updated: 2024/12/04 20:05:27 by gabriela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,16 @@ FILES = \
 	philo.c\
 	page_philo.c\
 	validations.c\
-	philo_utils.c\
-	error.c\
+	utils.c\
+	message.c\
 	clear_memory.c\
-	dinner_philo.c\
-	create_arr.c\
-	monitoring.c\
+	init.c\
+	func_utils.c\
+	get_set.c\
+	dinner_utils.c\
+	dinner_start.c\
+	monitor.c\
+	time.c\
 
 OBJS = $(FILES:.c=.o)
 
